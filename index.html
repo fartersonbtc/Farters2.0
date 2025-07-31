@@ -9,7 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
   />
-  <audio id="fartSound" src="C:\Users\J.P.M\Downloads/sound.mp3" preload="auto"></audio>
+  <audio id="fartSound" src="assets/voices/sound.mp3" preload="auto"></audio>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -528,11 +528,11 @@ html {
 
 </head>
 <body>
-    <audio id="fartSound" src="C:\Users\J.P.M\Downloads/sound.mp3" preload="auto"></audio>
+    <audio id="fartSound" src="assets/voices/sound.mp3" preload="auto"></audio>
 
   <div id="loading-overlay">
   <div id="loading-container" style="text-align:center;">
-    <img src="C:\Users\J.P.M\Downloads/btnfart.png" alt="Loading fart animation" />
+    <img src="assets/images/btnfart.png" alt="Loading fart animation" />
     <p id="loading-text">Farting<span class="dots">...</span></p>
   </div>
 </div>
@@ -541,19 +541,19 @@ html {
 <!-- Moved CTA Buttons here -->
   <div class="text-center flex flex-wrap justify-center gap-4 mt-6">
     <a href="https://x.com/FartersBRC" target="_blank" class="btn rounded-xl">
-      <img src="C:\Users\J.P.M\Downloads/xicon.png" alt="Twitter X" style="width:36px; height:36px; object-fit: contain;" />
+      <img src="assets/images/xicon.png" alt="Twitter X" style="width:36px; height:36px; object-fit: contain;" />
       Follow on X
     </a>
     <a href="#wl-checker" class="btn rounded-xl">
-      <img src="C:\Users\J.P.M\Downloads/sr1.png" alt="WL Checker" style="max-width:36px; height:36px; object-fit: contain;" />
+      <img src="assets/images/sr1.png" alt="WL Checker" style="max-width:36px; height:36px; object-fit: contain;" />
       FartList Checker
     </a>
     <a href="#mint-details"  class="btn rounded-xl">
-      <img src="C:\Users\J.P.M\Downloads/sr2.png" alt="Mint Page" style="width:36px; height:36px; object-fit: contain;" />
+      <img src="assets/images/sr2.png" alt="Mint Page" style="width:36px; height:36px; object-fit: contain;" />
       Mint Infos
     </a>
     <a href="#" target="_blank" class="btn rounded-xl">
-      <img src="C:\Users\J.P.M\Downloads/meicon.png" alt="Magic Eden" style="width:36px; height:36px; object-fit: contain;" />
+      <img src="assets/images/meicon.png" alt="Magic Eden" style="width:36px; height:36px; object-fit: contain;" />
       Magic Eden (soon)
     </a>
   </div>
@@ -562,7 +562,7 @@ html {
  <header class="text-center mb-10">
   <header class="text-center mb-10">
   <img 
-  src="C:\Users\J.P.M\Downloads/log2.png" 
+  src="assets/images/log2.png" 
   alt="Pixel Farters Logo" 
   class="mx-auto mt-2 w-full max-w-[800px] min-w-[300px] h-auto logo-hover-fart" 
   style="margin-top: 0.3rem; margin-bottom: 0.3rem;" 
@@ -746,10 +746,10 @@ html {
   <!-- Link icons now at the bottom -->
 <div class="flex justify-center items-center gap-4">
   <a href="https://magiceden.io" target="_blank" title="Magic Eden" class="icon-btn">
-    <img src="C:\Users\J.P.M\Downloads/meicon.png" alt="Magic Eden" style="width:80px; height:80px; object-fit: contain;" />
+    <img src="assets/images/meicon.png" alt="Magic Eden" style="width:80px; height:80px; object-fit: contain;" />
   </a>
   <a href="https://x.com/FartersBRC" target="_blank" title="Follow on X" class="icon-btn">
-    <img src="C:\Users\J.P.M\Downloads/xicon.png" alt="Twitter X" style="width:60px; height:60px; object-fit: contain;" />
+    <img src="assets/images/xicon.png" alt="Twitter X" style="width:60px; height:60px; object-fit: contain;" />
   </a>
 </div>
 
@@ -788,10 +788,10 @@ html {
 
     // Your art images array - update with your real paths/URLs
     const artImages = [
-      "C:\Users\J.P.M\Downloads/art1.png",
-      "C:\Users\J.P.M\Downloads/art3.png",
-      "C:\Users\J.P.M\Downloads/art2.png",
-      "C:\Users\J.P.M\Downloads/art1.png",
+      "assets/images/art1.png",
+      "assets/images/art3.png",
+      "assets/images/art2.png",
+      "assets/images/art1.png",
       
     ];
 
@@ -824,7 +824,7 @@ html {
     });
   </script>
 
-  <audio id="fartSound" src="C:\Users\J.P.M\Downloads/sound.mp3" preload="auto"></audio>
+  <audio id="fartSound" src="assets/voices/sound.mp3" preload="auto"></audio>
 
   <script>
     const fartAudio = document.getElementById('fartSound');
@@ -843,7 +843,7 @@ html {
 <script>
   document.addEventListener("mousemove", function(e) {
     const fart = document.createElement("img");
-    fart.src = "C:\Users\J.P.M\Downloads/btnfart.png"; // Use your custom fart image
+    fart.src = "assets/images/btnfart.png"; // Use your custom fart image
     fart.className = "fart-sprite";
     fart.style.left = `${e.pageX}px`;
     fart.style.top = `${e.pageY}px`;
