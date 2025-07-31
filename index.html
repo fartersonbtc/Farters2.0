@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon"  type="image/png" href="btnfart.png" />
   <title>Farters | BRC-2.0</title>
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
   <audio id="fartSound" src="assets\voices\sound.mp3" preload="auto"></audio>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -577,51 +581,92 @@ html {
 
 
 
-  <!-- Cards Section -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-    <!-- Story -->
-    <div class="bg-white rounded-xl border-4 border-[#2c5c3b] p-6 card">
-      <h2 class="text-xl section-title mb-4 outlined-text">💨 Story</h2>
-      <p class="text-xs">
-        Deep in the blockchain sewers, Pixel Farters evolved. Fueled by beans and memes, they fight gas fees with gas power.
-      </p>
-    </div>
+   <!-- Meme Story Carousel -->
+<section class="relative w-full max-w-5xl mx-auto my-16">
+  <h2 class="text-center text-3xl md:text-4xl font-bold mb-8 outlined-text">💨 Our Fart Journey</h2>
 
-    <!-- Why Farters -->
-    <div class="bg-white rounded-xl border-4 border-[#2c5c3b] p-6 card">
-      <h2 class="text-xl section-title mb-4 outlined-text">🤔 Why Farters?</h2>
-      <p class="text-xs">
-        Because every serious chain needs unserious fun. We’re the gas behind the movement, literally.
-      </p>
-    </div>
+  <!-- Slider Wrapper -->
+  <div id="fart-slider" class="overflow-hidden relative">
+    <div id="fart-track" class="flex transition-transform duration-700 ease-in-out">
+      
+      <!-- Slide 1 -->
+      <div class="min-w-full p-9">
+        <div class="mint-card">
+          <h3 class="mint-title">💨 Story</h3>
+          <p class="mint-info text-sm mt-4">
+            Deep in blockchain sewers, Pixel Farters evolved. Fueled by beans & memes, they battle gas fees with pure gas.
+          </p>
+        </div>
+      </div>
 
-    <!-- How to WL -->
-    <div class="bg-white rounded-xl border-4 border-[#2c5c3b] p-6 card">
-      <h2 class="text-xl section-title mb-4 outlined-text">📋 How to WL</h2>
-      <p class="text-xs">
-        Join us on X, fart in replies, share memes, and claim your spot in the gas chamber. Only the loudest get in.
-      </p>
-    </div>
+      <!-- Slide 2 -->
+      <div class="min-w-full p-9">
+        <div class="mint-card">
+          <h3 class="mint-title">🤔 Why Farters?</h3>
+          <p class="mint-info text-sm mt-4">
+            Because crypto needs comic relief. We're the wind beneath the Web3 cheeks.
+          </p>
+        </div>
+      </div>
 
-    <!-- Roadmap -->
-    <div class="bg-white rounded-xl border-4 border-[#2c5c3b] p-6 card">
-      <h2 class="text-xl section-title mb-4 outlined-text">🗺️ Roadmap</h2>
-      <ul class="list-disc text-xs pl-4">
-        <li>Launch 2,222 Farters</li>
-        <li>WL Mint + Public Blastoff</li>
-        <li>Air freshener airdrops 💨</li>
-        <li>Fart-to-Earn utility</li>
-      </ul>
-    </div>
+      <!-- Slide 3 -->
+      <div class="min-w-full p-9">
+        <div class="mint-card">
+          <h3 class="mint-title">📋 How to WL</h3>
+          <p class="mint-info text-sm mt-4">
+            Follow us on X. Fart in the comments. Drop the loudest memes. Let the stench speak for itself.
+          </p>
+        </div>
+      </div>
 
-     <!-- BRC-2.0 Token Card -->
-    <div class="bg-white rounded-xl border-4 border-[#2c5c3b] p-6 card">
-      <h2 class="text-xl section-title mb-4 outlined-text">🔗 BRC-2.0 Token</h2>
-      <p class="text-xs">
-        Pixel Farters come with their own BRC-2.0 token—fuel your farts and earn rewards! Stake your Farters to collect $GAS tokens and unlock exclusive perks in the community.
-      </p>
+      <!-- Slide 4 -->
+      <div class="min-w-full p-9">
+        <div class="mint-card">
+          <h3 class="mint-title">🗺️ Roadmap</h3>
+          <ul class="list-disc text-sm text-left mt-4 pl-4 text-[#2c5c3b] font-bold">
+            <li>Launch 2,222 Farters</li>
+            <li>Whitelist Blast</li>
+            <li>Air Freshener Airdrops</li>
+            <li>Fart-To-Earn Utility</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="min-w-full p-9">
+        <div class="mint-card">
+          <h3 class="mint-title">🔗 BRC-2.0 Token</h3>
+          <p class="mint-info text-sm mt-4">
+            Stake your Farters to earn $GAS. Convert methane to memethane. The future is stinkonomics.
+          </p>
+        </div>
+      </div>
+
     </div>
   </div>
+
+<!-- Navigation Buttons -->
+<div class="mb-20 flex justify-center mt-6 gap-6">
+  <button id="fart-prev" class="btn rounded-full px-6 py-3 text-base sm:text-sm md:text-base flex items-center gap-2">
+    <span class="hidden sm:inline-flex items-center gap-2">
+      <i class="fas fa-arrow-left w-5 h-5"></i>
+      Prev Fart
+    </span>
+    <span class="inline sm:hidden">
+      <i class="fas fa-arrow-left text-2xl"></i>
+    </span>
+  </button>
+  <button id="fart-next" class="btn rounded-full px-6 py-3 text-base sm:text-sm md:text-base flex items-center gap-2">
+    <span class="hidden sm:inline-flex items-center gap-2">
+      Next Fart
+      <i class="fas fa-arrow-right w-5 h-5"></i>
+    </span>
+    <span class="inline sm:hidden">
+      <i class="fas fa-arrow-right text-2xl"></i>
+    </span>
+  </button>
+</div>
+
 
  
 
@@ -813,6 +858,34 @@ html {
 
 
 
+</script>
+
+
+
+<script>
+  let fartIndex = 0;
+  const fartTrack = document.getElementById('fart-track');
+  const totalFarts = fartTrack.children.length;
+
+  function updateFartSlider() {
+    fartTrack.style.transform = `translateX(-${fartIndex * 100}%)`;
+  }
+
+  document.getElementById('fart-next').addEventListener('click', () => {
+    fartIndex = (fartIndex + 1) % totalFarts;
+    updateFartSlider();
+  });
+
+  document.getElementById('fart-prev').addEventListener('click', () => {
+    fartIndex = (fartIndex - 1 + totalFarts) % totalFarts;
+    updateFartSlider();
+  });
+
+  // Optional auto-slide
+  setInterval(() => {
+    fartIndex = (fartIndex + 1) % totalFarts;
+    updateFartSlider();
+  }, 8000);
 </script>
   
 
