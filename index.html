@@ -340,29 +340,20 @@ html {
     }
 
     .sneakpeek-img {
-  border-radius: 1.25rem;
-  padding: 4px;
-  background: repeating-linear-gradient(
-    45deg,
-    #2c5c3b,
-    #2c5c3b 5px,
-    #7f9a33 5px,
-    #7f9a33 10px
-  );
-  outline: 4px dashed white;
-  outline-offset: -6px;
+  border-radius: 1.5rem;
+  border: 3px solid #2c5c3b;
   box-shadow:
-    0 0 0 4px #2c5c3b,
-    8px 8px 0px 0px #7f9a33,
-    -4px -4px 0px 0px #2c5c3b;
-  transform: rotate(-1deg);
-  transition: all 0.4s ease;
+    4px 4px 0 #7f9a33,
+    -4px -4px 0 #7f9a33,
+    8px 8px 0 #2c5c3b;
+  cursor: pointer;
   width: 100%;
   height: auto;
-  cursor: pointer;
-  filter: contrast(1.1) saturate(1.1);
+  backface-visibility: hidden;
+  transition: box-shadow 0.3s ease, transform 0.6s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
-
 
 
     .sneakpeek-img.flip-out {
@@ -375,15 +366,15 @@ html {
       opacity: 1;
     }
 
-.sneakpeek-img:hover {
-  transform: scale(1.08) rotate(2deg) skew(-1deg, 1deg);
-  filter: brightness(1.1) hue-rotate(-15deg);
+    .sneakpeek-img:hover {
+  transform: scale(1.05) rotate(-1.5deg);
   box-shadow:
-    0 0 12px #7f9a33,
-    0 0 24px #2c5c3b,
-    0 0 8px white;
+    6px 6px 0 #7f9a33,
+    -6px -6px 0 #7f9a33,
+    12px 12px 0 #14532d;
+  z-index: 10;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 
 
