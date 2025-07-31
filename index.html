@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Farters | BRC-2.0</title>
+  <link rel="icon"  type="image/png" href="assets/images/btnfart.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+html {
+  scroll-behavior: smooth;
+}
+
+    body {
+      background-color: #fff;
+      background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), 
+                        linear-gradient(-45deg, #ccc 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, #ccc 75%), 
+                        linear-gradient(-45deg, transparent 75%, #ccc 75%);
+      background-size: 32px 32px;
+      background-position: 0 0, 0 16px, 16px -16px, -16px 0px;
+      font-family: 'Press Start 2P', cursive;
+      color: #2c5c3b;
+      margin: 0;
+      padding: 0;
+
+    }
+
+    /* Prevent scrolling while loading */
+    .noscroll {
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    h1, h2 {
+      font-weight: bold;
+    }
+
+    .outlined-text {
+      color: white;
+      text-shadow:
+        -4px -4px 0 #2c5c3b,
+        -4px -3px 0 #2c5c3b,
+        -4px -2px 0 #2c5c3b,
+        -4px -1px 0 #2c5c3b,
+        -4px 0    0 #2c5c3b,
+        -4px 1px  0 #2c5c3b,
+        -4px 2px  0 #2c5c3b,
+        -4px 3px  0 #2c5c3b,
+        -4px 4px  0 #2c5c3b,
+
+        -3px -4px 0 #2c5c3b,
+        -2px -4px 0 #2c5c3b,
+        -1px -4px 0 #2c5c3b,
+         0   -4px 0 #2c5c3b,
+         1px -4px 0 #2c5c3b,
+         2px -4px 0 #2c5c3b,
+         3px -4px 0 #2c5c3b,
+         4px -4px 0 #2c5c3b,
+
+         4px -3px 0 #2c5c3b,
+         4px -2px 0 #2c5c3b,
+         4px -1px 0 #2c5c3b,
+         4px 0    0 #2c5c3b,
+         4px 1px  0 #2c5c3b,
+         4px 2px  0 #2c5c3b,
+         4px 3px  0 #2c5c3b,
+         4px 4px  0 #2c5c3b,
+
+         3px 4px  0 #2c5c3b,
+         2px 4px  0 #2c5c3b,
+         1px 4px  0 #2c5c3b,
+         0   4px  0 #2c5c3b,
+        -1px 4px  0 #2c5c3b,
+        -2px 4px  0 #2c5c3b,
+        -3px 4px  0 #2c5c3b;
+    }
+
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05) rotate(-1deg);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+    .btn {
+      background-color: #7f9a33;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: 4px solid #2c5c3b;
+      transition: all 0.3s ease;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn:hover {
+      transform: scale(1.1) rotate(1deg);
+      background-color: #2c5c3b;
+      border-color: #7f9a33;
+    }
+
+
+    .icon-btn img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 0 3px #2c5c3b);
+  cursor: pointer;
+}
+
+.icon-btn img:hover {
+  transform: scale(1.2) rotate(10deg);
+  filter: drop-shadow(0 0 6px #2c5c3b);
+}
+
+
+
+
+
+.mint-card {
+  background: white;
+  border: 3px solid #2c5c3b;
+  border-radius: 1.5rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow:
+    4px 4px 0 #7f9a33,
+    -4px -4px 0 #7f9a33,
+    8px 8px 0 #2c5c3b; /* Meme cartoon fart-shadow */
+}
+
+.mint-card:hover {
+  transform: scale(1.05) rotate(-1.5deg);
+  box-shadow:
+    6px 6px 0 #7f9a33,
+    -6px -6px 0 #7f9a33,
+    12px 12px 0 #14532d;
+  background: #f0fff4;
+}
+
+.mint-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c5c3b;
+  margin-bottom: 1rem;
+}
+
+.mint-info {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2c5c3b;
+}
+
+.mint-link {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2c5c3b;
+  border: 2px dashed #2c5c3b;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.mint-link:hover {
+  background: #2c5c3b;
+  color: white;
+  transform: scale(1.1);
+}
+
+
+
+
+
+
+#loading-text {
+   margin-top: 1rem;
+  font-family: 'Press Start 2P', cursive;
+  font-weight: bold;
+  font-size: 1.85rem;
+  color: #2c5c3b;
+  text-align: center;
+  user-select: none;
+}
+
+.dots {
+  animation: blink 1.2s infinite;
+  display: inline-block;
+}
+
+.dot:nth-child(1) {
+  animation-delay: 0s;
+}
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%, 20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+.fart-sprite {
+    position: absolute;
+    width: 48px !important;
+    height: 48px !important;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    animation: fartFade 0.8s ease-out forwards;
+  
+  }
+
+  @keyframes fartFade {
+    0% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -80%) scale(2);
+    }
+  }
+
+
+
+    .section-title {
+      font-size: 1.75rem;
+    }
+
+
+
+
+
+@keyframes fart-wobble {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.05) rotate(2deg); }
+  50% { transform: scale(1.1) rotate(-2deg); }
+  75% { transform: scale(1.05) rotate(1deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.logo-hover-fart:hover {
+  animation: fart-wobble 0.8s ease-in-out;
+  position: relative;
+}
+
+.logo-hover-fart:hover::after {
+  content: '💨';
+  position: absolute;
+  right: -1.5rem;
+  top: 30%;
+  font-size: 1.5rem;
+  animation: puff-away 0.8s forwards;
+  opacity: 0;
+}
+
+@keyframes puff-away {
+  0% { transform: translateX(0) scale(1); opacity: 1; }
+  100% { transform: translateX(50px) scale(0.3); opacity: 0; }
+}
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    @media (max-width: 640px) {
+      .section-title {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Loading Overlay */
+  #loading-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #fff;
+  background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), 
+                    linear-gradient(-45deg, #ccc 25%, transparent 25%), 
+                    linear-gradient(45deg, transparent 75%, #ccc 75%), 
+                    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+  background-size: 32px 32px;
+  background-position: 0 0, 0 16px, 16px -16px, -16px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Add this */
+  gap: 1rem; /* space between image and text */
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+
+    #loading-overlay img {
+      width: 20vw;
+      max-width: 200px;
+      min-width: 100px;
+      height: auto;
+      animation: bounce 2s ease-in-out infinite;
+      filter: drop-shadow(2px 2px 2px #7f9a33);
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-20px) scale(1.1);
+      }
+    }
+
+    /* Sneak Peek Flip Animation */
+    .sneakpeek-img {
+      border-radius: 1rem;
+      border: 4px solid #7f9a33;
+      cursor: pointer;
+      width: 100%;
+      height: auto;
+      backface-visibility: hidden;
+      transition: box-shadow 0.3s ease, transform 0.6s ease;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+
+    .sneakpeek-img.flip-out {
+      transform: rotateY(90deg);
+      opacity: 0;
+    }
+
+    .sneakpeek-img.flip-in {
+      transform: rotateY(0deg);
+      opacity: 1;
+    }
+
+    .sneakpeek-img:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 0 12px 4px #7f9a33;
+      z-index: 10;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* RESPONSIVE PHONE FIXES */
+    @media (max-width: 640px) {
+      /* Make body padding smaller on small screens */
+      body {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+
+      /* Header text size smaller */
+      header h1.text-4xl.section-title {
+        font-size: 1.8rem !important;
+      }
+      header p.text-sm {
+        font-size: 0.75rem !important;
+      }
+
+      /* Buttons - make them wrap nicely and bigger tap targets */
+      .btn {
+        font-size: 1rem !important;
+        padding: 0.9rem 1.2rem !important;
+        gap: 0.5rem !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+      }
+      .btn img {
+        width: 28px !important;
+        height: 28px !important;
+      }
+
+      /* Cards grid single column on phones */
+      .grid.grid-cols-1.md\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+      }
+      .card {
+        padding: 1rem !important;
+      }
+      .card h2.text-xl.section-title {
+        font-size: 1.3rem !important;
+      }
+      .card p.text-xs,
+      .card ul.list-disc.text-xs {
+        font-size: 0.85rem !important;
+      }
+
+      /* Sneak peek images smaller and spaced */
+      #sneakpeek-grid.grid.grid-cols-2.md\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.5rem !important;
+      }
+      .sneakpeek-img {
+        border-width: 3px !important;
+        border-radius: 0.5rem !important;
+      }
+
+      /* Whitelist checker section text smaller and input full width */
+      #wl-checker h2.text-5xl.font-bold.mb-8.outlined-text {
+        font-size: 2rem !important;
+      }
+      #wl-checker p.text-xl.mb-8.font-bold {
+        font-size: 1rem !important;
+      }
+      #wl-checker input[type="text"] {
+        font-size: 1rem !important;
+        padding: 1rem !important;
+      }
+      #wl-checker button.btn.text-lg.px-8.py-4.rounded-xl {
+        font-size: 1.1rem !important;
+        padding: 1rem 1.5rem !important;
+      }
+      #wl-checker p.mt-8.text-xl.font-bold {
+        font-size: 1rem !important;
+      }
+
+      /* Bottom icons smaller and spaced */
+      .flex.justify-center.items-center.gap-4.mt-12 a.icon-btn img {
+        width: 48px !important;
+        height: 48px !important;
+      }
+
+      /* Footer font bigger for readability */
+      footer.text-xs.font-bold {
+        font-size: 0.9rem !important;
+        padding: 1rem 0 !important;
+      }
+    }
+@media (max-width: 640px) {
+  /* ... other rules ... */
+
+  /* Whitelist checker section title smaller and responsive */
+  #wl-checker h2.text-5xl.font-bold.mb-8.outlined-text {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+    word-break: break-word !important;
+  }
+  
+  /* Also other smaller text tweaks you had */
+  #wl-checker p.text-xl.mb-8.font-bold {
+    font-size: 1rem !important;
+  }
+  
+  #wl-checker input[type="text"] {
+    font-size: 1rem !important;
+    padding: 1rem !important;
+  }
+  
+  #wl-checker button.btn.text-lg.px-8.py-4.rounded-xl {
+    font-size: 1.1rem !important;
+    padding: 1rem 1.5rem !important;
+  }
+  
+  #wl-checker p.mt-8.text-xl.font-bold {
+    font-size: 1rem !important;
+  }
+}
+
+
+
+
+@media (max-width: 640px) {
+  #loading-overlay {
+    padding: 0 1rem; /* small horizontal padding */
+  }
+
+  #loading-overlay img {
+    width: 40vw !important; /* smaller width on phones */
+    max-width: 150px !important;
+    min-width: 80px !important;
+    height: auto !important;
+  }
+
+  #loading-text {
+    font-size: 1rem !important;
+    text-align: center; /* center text */
+    
+  }
+}
+
+</style>
+</head>
+<body class="p-4 sm:p-10">
+
+  <div id="loading-overlay">
+  <div id="loading-container" style="text-align:center;">
+    <img src="assets\images\btnfart.png" alt="Loading fart animation" />
+    <p id="loading-text">Farting<span class="dots">...</span></p>
+  </div>
+</div>
+
+
+<!-- Moved CTA Buttons here -->
+  <div class="text-center flex flex-wrap justify-center gap-4 mt-6">
+    <a href="https://x.com/FartersBRC" target="_blank" class="btn rounded-xl">
+      <img src="assets/images/xicon.png" alt="Twitter X" style="width:36px; height:36px; object-fit: contain;" />
+      Follow on X
+    </a>
+    <a href="#wl-checker" class="btn rounded-xl">
+      <img src="assets/images/sr1.png" alt="WL Checker" style="width:36px; height:36px; object-fit: contain;" />
+      FartList Checker
+    </a>
+    <a href="#mint-details"  class="btn rounded-xl">
+      <img src="assets/images/sr2.png" alt="Mint Page" style="width:36px; height:36px; object-fit: contain;" />
+      Mint Infos
+    </a>
+    <a href="#" target="_blank" class="btn rounded-xl">
+      <img src="assets/images/meicon.png" alt="Magic Eden" style="width:36px; height:36px; object-fit: contain;" />
+      Magic Eden (soon)
+    </a>
+  </div>
+
+
+ <header class="text-center mb-10">
+  <header class="text-center mb-10">
+  <img 
+  src="assets/images/log2.png" 
+  alt="Pixel Farters Logo" 
+  class="mx-auto mb-2 mt-2 w-full max-w-[1200px] min-w-[300px] h-auto logo-hover-fart" 
+  style="margin-top: 0.3rem; margin-bottom: 0.3rem;" 
+/>
+
+  <p class="text-sm text-[#2c5c3b]">BIO HERE</p>
+
+  <!-- Buttons... -->
+</header>
+
+
+  
+</header>
+
+
+
+
+
+  <!-- Cards Section -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+    <!-- Story -->
+    <div class="bg-white rounded-xl border-4 border-[#2c5c3b] p-6 card">
+      <h2 class="text-xl section-title mb-4 outlined-text">💨 Story</h2>
+      <p class="text-xs">
+        Deep in the blockchain sewers, Pixel Farters evolved. Fueled by beans and memes, they fight gas fees with gas power.
+      </p>
+    </div>
+
+    <!-- Why Farters -->
+    <div class="bg-white rounded-xl border-4 border-[#2c5c3b] p-6 card">
+      <h2 class="text-xl section-title mb-4 outlined-text">🤔 Why Farters?</h2>
+      <p class="text-xs">
+        Because every serious chain needs unserious fun. We’re the gas behind the movement, literally.
+      </p>
+    </div>
+
+    <!-- How to WL -->
+    <div class="bg-white rounded-xl border-4 border-[#2c5c3b] p-6 card">
+      <h2 class="text-xl section-title mb-4 outlined-text">📋 How to WL</h2>
+      <p class="text-xs">
+        Join us on X, fart in replies, share memes, and claim your spot in the gas chamber. Only the loudest get in.
+      </p>
+    </div>
+
+    <!-- Roadmap -->
+    <div class="bg-white rounded-xl border-4 border-[#2c5c3b] p-6 card">
+      <h2 class="text-xl section-title mb-4 outlined-text">🗺️ Roadmap</h2>
+      <ul class="list-disc text-xs pl-4">
+        <li>Launch 2,222 Farters</li>
+        <li>WL Mint + Public Blastoff</li>
+        <li>Air freshener airdrops 💨</li>
+        <li>Fart-to-Earn utility</li>
+      </ul>
+    </div>
+
+     <!-- BRC-2.0 Token Card -->
+    <div class="bg-white rounded-xl border-4 border-[#2c5c3b] p-6 card">
+      <h2 class="text-xl section-title mb-4 outlined-text">🔗 BRC-2.0 Token</h2>
+      <p class="text-xs">
+        Pixel Farters come with their own BRC-2.0 token—fuel your farts and earn rewards! Stake your Farters to collect $GAS tokens and unlock exclusive perks in the community.
+      </p>
+    </div>
+  </div>
+
+ 
+
+
+  <!-- Gallery -->
+  <div class="mb-10 text-center">
+    <h2 class="text-xl section-title mb-4 outlined-text">🖼️ Gas Leak Preview</h2>
+    <div id="sneakpeek-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <img src="" alt="Sneak Peek Art 1" class="sneakpeek-img" />
+      <img src="" alt="Sneak Peek Art 2" class="sneakpeek-img" />
+      <img src="" alt="Sneak Peek Art 3" class="sneakpeek-img" />
+      <img src="" alt="Sneak Peek Art 4" class="sneakpeek-img" />
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Mint Details Section -->
+<section id="mint-details" class="py-12 bg-transparent">
+  <h2 class="text-4xl font-bold text-center mb-10 outlined-text">💨 Mint Details 💨</h2>
+  <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    
+    <!-- Mint Date Card -->
+    <div class="mint-card">
+      <h3 class="mint-title">📅<br>Mint Date</h3>
+      <p class="mint-info">August ??, 2025</p>
+    </div>
+
+    <!-- Supply Card -->
+    <div class="mint-card">
+      <h3 class="mint-title">💥<br>Supply</h3>
+      <p class="mint-info">???? Farters</p>
+    </div>
+
+    <!-- Price Card -->
+    <div class="mint-card">
+      <h3 class="mint-title">💸<br>Mint Price</h3>
+      <p class="mint-info">?? BTC</p>
+    </div>
+
+    <!-- Launchpad Card -->
+    <div class="mint-card">
+      <h3 class="mint-title">🚀<br>Launchpad</h3>
+      <a href="#" target="_blank" class="mint-link">Soon</a>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+<!-- WL Checker Section -->
+<section id="wl-checker" class="py-10 px-4">
+  <div class="w-full max-w-4xl mx-auto bg-white rounded-2xl border-4 border-[#2c5c3b] p-10 text-center shadow-2xl">
+    <h2 class="text-5xl font-bold mb-8 outlined-text">FartList Checker</h2>
+    <p class="text-[#2c5c3b] text-xl mb-8 font-bold">Paste your BTC Taproot address below to see if your gas is strong enough to get FartListed.</p>
+    
+    <input type="text"
+           placeholder="Your Taproot Address..."
+           class="w-full max-w-xl mx-auto p-4 rounded-lg border-2 border-[#2c5c3b] text-[#2c5c3b] font-bold text-center text-base mb-6 outline-none focus:ring-2 focus:ring-[#7f9a33]" />
+
+    <div class="flex justify-center">
+      <button class="btn text-lg px-8 py-4 rounded-xl hover:scale-105 transition-transform duration-200">
+        Check my Gas!
+      </button>
+    </div>
+
+    <p class="mt-8 text-xl font-bold text-[#2c5c3b]">Results will blow in here...</p>
+  </div>
+</section>
+
+
+
+
+  <!-- Link icons now at the bottom -->
+<div class="flex justify-center items-center gap-4 mt-12">
+  <a href="https://magiceden.io" target="_blank" title="Magic Eden" class="icon-btn">
+    <img src="assets/images/meicon.png" alt="Magic Eden" style="width:80px; height:80px; object-fit: contain;" />
+  </a>
+  <a href="https://x.com/FartersBRC" target="_blank" title="Follow on X" class="icon-btn">
+    <img src="assets/images/xicon.png" alt="Twitter X" style="width:60px; height:60px; object-fit: contain;" />
+  </a>
+</div>
+
+
+<!-- Footer -->
+<footer class="mt-12 text-center text-xs font-bold" style="background-color: #2c5c3b; color: white; padding: 0.75rem 0;">
+  © 2025 Farters — BRC-2.0 
+  <p class="text-center text-xs" style="font-weight: normal; padding: 4px;">Powered by Beans & Blockchain Gas</p>
+</footer>
+
+
+
+
+  <script>
+    // Remove loading overlay after 5 seconds with fade out and block scroll while loading
+    window.addEventListener('load', () => {
+      // Disable scrolling
+      document.body.classList.add('noscroll');
+
+      setTimeout(() => {
+        const overlay = document.getElementById('loading-overlay');
+        overlay.style.opacity = '0';
+
+        setTimeout(() => {
+          overlay.style.display = 'none';
+          // Enable scrolling again
+          document.body.classList.remove('noscroll');
+        }, 500);
+      }, 2500);
+    });
+
+    // Your art images array - update with your real paths/URLs
+    const artImages = [
+      "assets\\arts\\art1.png",
+      "assets\\arts\\art3.png",
+      "assets\\arts\\art2.png",
+      "assets\\arts\\art1.png",
+      
+    ];
+
+    const sneakPeekImgs = document.querySelectorAll('.sneakpeek-img');
+    let currentIndex = 0;
+
+    function flipImage(img, newSrc) {
+      img.classList.add('flip-out');
+      setTimeout(() => {
+        img.src = newSrc;
+        img.classList.remove('flip-out');
+        img.classList.add('flip-in');
+      }, 300);
+      setTimeout(() => {
+        img.classList.remove('flip-in');
+      }, 600);
+    }
+
+    function updateSneakPeekImages() {
+      sneakPeekImgs.forEach((img, idx) => {
+        const artIndex = (currentIndex + idx) % artImages.length;
+        flipImage(img, artImages[artIndex]);
+      });
+      currentIndex = (currentIndex + sneakPeekImgs.length) % artImages.length;
+    }
+
+    window.addEventListener('load', () => {
+      updateSneakPeekImages();
+      setInterval(updateSneakPeekImages, 4000);
+    });
+  </script>
+
+  <audio id="fartSound" src="assets\voices\sound.mp3" preload="auto"></audio>
+
+  <script>
+    const fartAudio = document.getElementById('fartSound');
+
+    document.body.addEventListener('click', () => {
+      fartAudio.currentTime = 0;
+      fartAudio.play().catch(e => {
+        console.log('Audio play prevented:', e);
+      });
+    });
+  </script>
+
+
+
+
+<script>
+  document.addEventListener("mousemove", function(e) {
+    const fart = document.createElement("img");
+    fart.src = "assets/images/btnfart.png"; // Use your custom fart image
+    fart.className = "fart-sprite";
+    fart.style.left = `${e.pageX}px`;
+    fart.style.top = `${e.pageY}px`;
+
+    document.body.appendChild(fart);
+
+    setTimeout(() => {
+      fart.remove();
+    }, 800); // Remove after fade
+  });
+</script>
+
+
+
+
+</script>
+  
+
+
+  
+
+
+
+</body>
+</html>
