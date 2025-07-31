@@ -431,15 +431,28 @@ html {
         font-size: 0.85rem !important;
       }
 
-      /* Sneak peek images smaller and spaced */
-      #sneakpeek-grid.grid.grid-cols-2.md\:grid-cols-4 {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 0.5rem !important;
-      }
-      .sneakpeek-img {
-        border-width: 3px !important;
-        border-radius: 0.5rem !important;
-      }
+      
+
+
+
+      /* Sneak peek image enhancements */
+.sneakpeek-img {
+  border: 3px solid #2c5c3b;
+  border-radius: 0.75rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sneakpeek-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+
 
       /* Whitelist checker section text smaller and input full width */
       #wl-checker h2.text-5xl.font-bold.mb-8.outlined-text {
@@ -668,16 +681,17 @@ html {
 
 
   <!-- Gallery -->
-  <div class="mb-10 text-center">
-    <h2 class="text-center text-3xl md:text-4xl font-bold  outlined-text mb-10">Gas Leak Gallery</h2>
-    <div id="sneakpeek-grid" class="grid grid-cols-2 md:grid-cols-5 gap-5">
-      <img src="" alt="Sneak Peek Art 1" class="sneakpeek-img" />
-      <img src="" alt="Sneak Peek Art 2" class="sneakpeek-img" />
-      <img src="" alt="Sneak Peek Art 3" class="sneakpeek-img" />
-      <img src="" alt="Sneak Peek Art 4" class="sneakpeek-img" />
-      <img src="" alt="Sneak Peek Art 5" class="sneakpeek-img" />
-    </div>
+<div class="mb-10 text-center">
+  <h2 class="text-center text-3xl md:text-4xl font-bold outlined-text mb-10">Gas Leak Gallery</h2>
+  <div id="sneakpeek-grid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 px-4">
+    <img src="your-image1.png" alt="Sneak Peek Art 1" class="sneakpeek-img w-full h-auto object-cover" />
+    <img src="your-image2.png" alt="Sneak Peek Art 2" class="sneakpeek-img w-full h-auto object-cover" />
+    <img src="your-image3.png" alt="Sneak Peek Art 3" class="sneakpeek-img w-full h-auto object-cover" />
+    <img src="your-image4.png" alt="Sneak Peek Art 4" class="sneakpeek-img w-full h-auto object-cover" />
+    <img src="your-image5.png" alt="Sneak Peek Art 5" class="sneakpeek-img w-full h-auto object-cover" />
   </div>
+</div>
+
 
 
 
@@ -791,9 +805,9 @@ html {
     const artImages = [
       "assets/arts/art1.png",
       "assets/arts/art2.png",
-      "assets/arts/art3.png",
-      "assets/arts/art4.png",
-      "assets/arts/art5.png",
+      "assets/arts/art1.png",
+      "assets/arts/art2.png",
+      "assets/arts/art1.png",
       
     ];
 
