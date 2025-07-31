@@ -9,7 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
   />
-  <audio id="fartSound" src="assets\voices\sound.mp3" preload="auto"></audio>
+  <audio id="fartSound" src="assets/voices/sound.mp3" preload="auto"></audio>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -149,7 +149,7 @@ html {
 }
 
 .mint-title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
   color: #2c5c3b;
   margin-bottom: 1rem;
@@ -527,12 +527,12 @@ html {
 </style>
 
 </head>
-<body class="p-4 sm:p-10">
-    <audio id="fartSound" src="assets\voices\sound.mp3" preload="auto"></audio>
+<body>
+    <audio id="fartSound" src="assets/voices/sound.mp3" preload="auto"></audio>
 
   <div id="loading-overlay">
   <div id="loading-container" style="text-align:center;">
-    <img src="assets\images\btnfart.png" alt="Loading fart animation" />
+    <img src="assets/images/btnfart.png" alt="Loading fart animation" />
     <p id="loading-text">Farting<span class="dots">...</span></p>
   </div>
 </div>
@@ -564,13 +564,9 @@ html {
   <img 
   src="assets/images/log2.png" 
   alt="Pixel Farters Logo" 
-  class="mx-auto mb-2 mt-2 w-full max-w-[1200px] min-w-[300px] h-auto logo-hover-fart" 
+  class="mx-auto mt-2 w-full max-w-[800px] min-w-[300px] h-auto logo-hover-fart" 
   style="margin-top: 0.3rem; margin-bottom: 0.3rem;" 
 />
-
-  <p class="text-sm text-[#2c5c3b]">BIO HERE</p>
-
-  <!-- Buttons... -->
 </header>
 
 
@@ -582,8 +578,8 @@ html {
 
 
    <!-- Meme Story Carousel -->
-<section class="relative w-full max-w-5xl mx-auto my-16">
-  <h2 class="text-center text-3xl md:text-4xl font-bold mb-8 outlined-text">💨 Our Fart Journey</h2>
+<section class="relative w-full max-w-5xl mx-auto ">
+  <h2 class="text-center text-3xl md:text-4xl font-bold  outlined-text">Our Fart Journey</h2>
 
   <!-- Slider Wrapper -->
   <div id="fart-slider" class="overflow-hidden relative">
@@ -646,7 +642,7 @@ html {
   </div>
 
 <!-- Navigation Buttons -->
-<div class="mb-20 flex justify-center mt-6 gap-6">
+<div class="mb-14 flex justify-center mt-6 gap-6">
   <button id="fart-prev" class="btn rounded-full px-6 py-3 text-base sm:text-sm md:text-base flex items-center gap-2">
     <span class="hidden sm:inline-flex items-center gap-2">
       <i class="fas fa-arrow-left w-5 h-5"></i>
@@ -673,7 +669,7 @@ html {
 
   <!-- Gallery -->
   <div class="mb-10 text-center">
-    <h2 class="text-xl section-title mb-4 outlined-text">🖼️ Gas Leak Preview</h2>
+    <h2 class="text-center text-3xl md:text-4xl font-bold  outlined-text mb-10">Gas Leak Gallery</h2>
     <div id="sneakpeek-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <img src="" alt="Sneak Peek Art 1" class="sneakpeek-img" />
       <img src="" alt="Sneak Peek Art 2" class="sneakpeek-img" />
@@ -688,12 +684,12 @@ html {
 
   <!-- Mint Details Section -->
 <section id="mint-details" class="py-12 bg-transparent">
-  <h2 class="text-4xl font-bold text-center mb-10 outlined-text">💨 Mint Details 💨</h2>
+  <h2 class="text-center text-3xl md:text-4xl font-bold  outlined-text mb-10">Mint Details</h2>
   <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
     
     <!-- Mint Date Card -->
     <div class="mint-card">
-      <h3 class="mint-title">📅<br>Mint Date</h3>
+      <h3 class="mint-title">📅<br>Date</h3>
       <p class="mint-info">August ??, 2025</p>
     </div>
 
@@ -705,7 +701,7 @@ html {
 
     <!-- Price Card -->
     <div class="mint-card">
-      <h3 class="mint-title">💸<br>Mint Price</h3>
+      <h3 class="mint-title">💸<br>Price</h3>
       <p class="mint-info">?? BTC</p>
     </div>
 
@@ -748,7 +744,7 @@ html {
 
 
   <!-- Link icons now at the bottom -->
-<div class="flex justify-center items-center gap-4 mt-12">
+<div class="flex justify-center items-center gap-4">
   <a href="https://magiceden.io" target="_blank" title="Magic Eden" class="icon-btn">
     <img src="assets/images/meicon.png" alt="Magic Eden" style="width:80px; height:80px; object-fit: contain;" />
   </a>
@@ -759,10 +755,15 @@ html {
 
 
 <!-- Footer -->
-<footer class="mt-12 text-center text-xs font-bold" style="background-color: #2c5c3b; color: white; padding: 0.75rem 0;">
-  © 2025 Farters — BRC-2.0 
-  <p class="text-center text-xs" style="font-weight: normal; padding: 4px;">Powered by Beans & Blockchain Gas</p>
+<footer>
+  <div class="w-full mt-8 text-center text-xs font-bold bg-[white] text-#2c5c3b ">
+    © 2025 Farters — BRC-2.0 
+    <p class="text-center text-xs font-normal mt-1">Powered by Beans & Blockchain Gas</p>
+  </div>
 </footer>
+
+
+
 
 
 
@@ -787,10 +788,10 @@ html {
 
     // Your art images array - update with your real paths/URLs
     const artImages = [
-      "assets\\arts\\art1.png",
-      "assets\\arts\\art3.png",
-      "assets\\arts\\art2.png",
-      "assets\\arts\\art1.png",
+      "assets/arts/art1.png",
+      "assets/arts/art3.png",
+      "assets/arts/art2.png",
+      "assets/arts/art1.png",
       
     ];
 
@@ -823,7 +824,7 @@ html {
     });
   </script>
 
-  <audio id="fartSound" src="assets\voices\sound.mp3" preload="auto"></audio>
+  <audio id="fartSound" src="assets/voices/sound.mp3" preload="auto"></audio>
 
   <script>
     const fartAudio = document.getElementById('fartSound');
