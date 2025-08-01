@@ -954,38 +954,25 @@ On BRC-2.0, farts are utility.
 <script>
   const input = document.querySelector('#wl-checker input[type="text"]');
   const button = document.querySelector('#wl-checker button');
-  const resultP = document.querySelector('#wl-checker p.mt-8');
+  const result = document.querySelector('#wl-checker p.mt-8');
 
   button.addEventListener('click', async () => {
     const address = input.value.trim();
     if (!address) {
-      resultP.textContent = "Please enter your Taproot address.";
+      result.textContent = "Please enter your Taproot address.";
       return;
     }
-    resultP.textContent = "Checking your gas... 💨";
+
+    result.textContent = "Checking...";
 
     try {
-      const response = await fetch(`/.netlify/functions/checkFartlist?address=${encodeURIComponent(address)}`);
-      const data = await response.json();
+      const res = await fetch(`/.netlify/functions/checkFartlist?address=${encodeURIComponent(address)}`);
+      if (!res.ok) throw new Error(`Error: ${res.status}`);
 
-      if (response.ok) {
-        if (data.status === "FartListed") {
-          resultP.textContent = `🎉 Congrats! Address ${data.address} is FartListed!`;
-          resultP.style.color = "#2c5c3b";
-        } else if (data.status === "Not FartListed") {
-          resultP.textContent = `😢 Sorry, address ${data.address} is NOT FartListed.`;
-          resultP.style.color = "#7f9a33";
-        } else {
-          resultP.textContent = `⚠️ ${data.status}`;
-          resultP.style.color = "red";
-        }
-      } else {
-        resultP.textContent = `Error: ${data.status || "Unknown error"}`;
-        resultP.style.color = "red";
-      }
+      const data = await res.json();
+      result.textContent = data.status;
     } catch (err) {
-      resultP.textContent = "Network error, try again later.";
-      resultP.style.color = "red";
+      result.textContent = "Oops! Something went wrong.";
       console.error(err);
     }
   });
