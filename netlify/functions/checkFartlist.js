@@ -34,7 +34,7 @@ exports.handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify({
         address,
-        status: isFartlisted ? 'FartListed' : 'Not FartListed',
+        status: isFartlisted ? '✅ You"re FartListed! Your gas is strong 💨' : '❌ Not FartListed. Need stronger gas!',
       }),
     };
   } catch (err) {
