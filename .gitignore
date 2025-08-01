@@ -1,2 +1,5 @@
 # Local Netlify folder
 .netlify
+
+# Ignore environment variables file
+.env
