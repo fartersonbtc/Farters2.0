@@ -972,7 +972,7 @@ On BRC-2.0, farts are utility.
       const data = await res.json();
       result.textContent = data.status;
     } catch (err) {
-      result.textContent = "Oops! Something went wrong.";
+      result.textContent = "Invalid Taproot address.";
       console.error(err);
     }
   });
