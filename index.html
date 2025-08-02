@@ -613,14 +613,22 @@ p.mint-info {
   class="mx-auto mt-2 w-full max-w-[800px] min-w-[300px] h-auto logo-hover-fart" 
   style="margin-top: 0.3rem; margin-bottom: 0.3rem;" 
   />
-  <button id="fartMenuToggle" class="mx-auto p-2 rounded-full border-4 border-[#2c5c3b] bg-[#7f9a33] shadow-lg hover:scale-110 transition-transform duration-300" aria-label="Open Fart Menu">
-  <svg id="iconPlus" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-  </svg>
-  <svg id="iconClose" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-  </svg>
-</button>
+  <!-- Mobile-only CTA Buttons -->
+<div class="block sm:hidden flex justify-center gap-4 mt-4">
+  <a href="https://x.com/FartersBRC" target="_blank" class="icon-btn">
+    <img src="assets/images/xb.png" alt="X (Twitter)" style="width:36px; height:36px;" />
+  </a>
+  <a href="#wl-checker" class="icon-btn">
+    <img src="assets/images/sb.png" alt="FartList" style="width:36px; height:36px;" />
+  </a>
+  <a href="#mint-details" class="icon-btn">
+    <img src="assets/images/fb.png" alt="Mint" style="width:36px; height:36px;" />
+  </a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNiZ9BYiiRylY4uvcyYR9i0wCV35e341TofNk_ExtdCQ4wXA/viewform?usp=dialog" target="_blank" class="icon-btn">
+    <img src="assets/images/cb.png" alt="Collab" style="width:36px; height:36px;" />
+  </a>
+</div>
+
 
 
 </header>
@@ -1023,35 +1031,9 @@ This isn’t just f'Art — it’s gas with purpose.
 
 
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.getElementById('fartMenuToggle');
-  const dropdown = document.getElementById('fartMenuDropdown');
-  const iconPlus = document.getElementById('iconPlus');
-  const iconClose = document.getElementById('iconClose');
 
-  toggle.addEventListener('click', () => {
-    const isHidden = dropdown.classList.contains('hidden');
+</body>
 
-    if (isHidden) {
-      dropdown.classList.remove('hidden');
-      iconPlus.classList.add('hidden');
-      iconClose.classList.remove('hidden');
-    } else {
-      dropdown.classList.add('hidden');
-      iconClose.classList.add('hidden');
-      iconPlus.classList.remove('hidden');
-    }
-
-    const fartAudio = document.getElementById('fartSound');
-    if (fartAudio) {
-      fartAudio.currentTime = 0;
-      fartAudio.play().catch(() => {});
-    }
-  });
-});
-
-</script>
 
 
 </body>
