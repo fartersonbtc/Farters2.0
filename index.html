@@ -564,6 +564,60 @@ p.mint-info {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+.cta-scroll {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cta-scroll a {
+  scroll-snap-align: start;
+}
+
+.cta-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .cta-wrapper {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .cta-scroll .btn {
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    flex-direction: column;
+    text-align: center;
+    min-width: 120px;
+    background-color: #ffffff;
+    border: 2px dashed #2c5c3b;
+    box-shadow: 2px 2px 0 #7f9a33;
+  }
+
+  .cta-scroll .btn:hover {
+    background-color: #2c5c3b;
+    color: white;
+    transform: scale(1.05);
+  }
+
+  .cta-scroll img {
+    margin-bottom: 0.5rem;
+  }
+}
+
+
 </style>
 
 </head>
@@ -579,29 +633,30 @@ p.mint-info {
 
 
 <!-- Moved CTA Buttons here -->
-  <div class="text-center flex flex-wrap justify-center gap-4 mt-6">
-    <a href="https://x.com/FartersBRC" target="_blank" class="btn rounded-xl">
+ <div class="cta-wrapper mt-6 px-2">
+  <div class="cta-scroll flex gap-4 overflow-x-auto pb-2 sm:justify-center sm:flex-wrap">
+    <a href="https://x.com/FartersBRC" target="_blank" class="btn rounded-xl shrink-0">
       <img src="assets/images/xb.png" alt="Twitter X" style="width:36px; height:36px; object-fit: contain;" />
-      
     </a>
-    <a  target="_blank" class="btn rounded-xl">
+    <a target="_blank" class="btn rounded-xl shrink-0">
       <img src="assets/images/mb.png" alt="Magic Eden" style="width:36px; height:36px; object-fit: contain;" />
       (soon)
     </a>
-    <a href="#wl-checker" class="btn rounded-xl">
+    <a href="#wl-checker" class="btn rounded-xl shrink-0">
       <img src="assets/images/sb.png" alt="WL Checker" style="max-width:36px; height:36px; object-fit: contain;" />
       FartList Checker
     </a>
-    <a href="#mint-details"  class="btn rounded-xl">
+    <a href="#mint-details" class="btn rounded-xl shrink-0">
       <img src="assets/images/fb.png" alt="Mint Page" style="width:36px; height:36px; object-fit: contain;" />
       Mint Details
     </a>
-    <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdNiZ9BYiiRylY4uvcyYR9i0wCV35e341TofNk_ExtdCQ4wXA/viewform?usp=dialog"  class="btn rounded-xl">
-      <img src="assets/images/cb.png" alt="Mint Page" style="width:36px; height:38px; object-fit: contain;" />
+    <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdNiZ9BYiiRylY4uvcyYR9i0wCV35e341TofNk_ExtdCQ4wXA/viewform?usp=dialog" class="btn rounded-xl shrink-0">
+      <img src="assets/images/cb.png" alt="Collab" style="width:36px; height:38px; object-fit: contain;" />
       Collab Request
     </a>
-    
   </div>
+</div>
+
 
 
  <header class="text-center mb-10">
