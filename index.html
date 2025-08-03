@@ -571,24 +571,43 @@ p.mint-info {
 
 
 
-
-
-
 @keyframes cartoonSlideIn {
   0% {
-    transform: translateY(-20px) scale(0.8) rotate(-5deg);
+    transform: scale(0.8) rotate(-5deg);
     opacity: 0;
   }
   100% {
-    transform: translateY(0) scale(1) rotate(0deg);
+    transform: scale(1) rotate(0deg);
     opacity: 1;
   }
 }
 
 #mobile-menu.show {
   display: flex !important;
-  animation: cartoonSlideIn 0.5s ease-out forwards;
+  animation: cartoonSlideIn 0.4s ease-out forwards;
 }
+
+.cartoon-btn {
+  background: #fff;
+  border: 2px dashed #2c5c3b;
+  border-radius: 12px;
+  padding: 8px;
+  width: 54px;
+  height: 54px;
+  box-shadow: 2px 2px 8px rgba(44, 92, 59, 0.3);
+  transition: all 0.2s ease;
+}
+
+.cartoon-btn img {
+  width: 36px;
+  height: 36px;
+}
+
+.cartoon-btn:hover {
+  transform: scale(1.1) rotate(-2deg);
+  background-color: #e7fbe2;
+}
+
 
 
 </style>
@@ -640,31 +659,33 @@ p.mint-info {
   class="mx-auto mt-2 w-full max-w-[800px] min-w-[300px] h-auto logo-hover-fart" 
   style="margin-top: 0.3rem; margin-bottom: 0.3rem;" 
   />
-  <!-- Mobile Menu Toggle -->
+ <!-- Mobile Menu Toggle -->
 <div class="block sm:hidden text-center mt-4">
   <button id="mobile-menu-toggle" class="text-4xl text-[#2c5c3b] transition-transform duration-300 hover:scale-125">
     +
   </button>
 
-  <!-- Mobile Dropdown Menu (hidden by default) -->
-  <div id="mobile-menu" class="mt-4 flex-col items-center gap-4 hidden animate__animated" style="display: none;">
-    <a href="https://x.com/FartersBRC" target="_blank" class="icon-btn">
-      <img src="assets/images/xicon.png" alt="X (Twitter)" style="width:36px; height:36px;" />
+  <!-- Cartoon Style Dropdown -->
+  <div id="mobile-menu" class="hidden flex-col items-center gap-3 mt-4" style="display: none;">
+    <!-- Each icon inside a rounded button card -->
+    <a href="https://x.com/FartersBRC" target="_blank" class="cartoon-btn">
+      <img src="assets/images/xicon.png" alt="X" />
     </a>
-    <a target="_blank" class="icon-btn">
-      <img src="assets/images/m1.png" alt="Magic Eden" style="width:36px; height:36px;" />
+    <a target="_blank" class="cartoon-btn">
+      <img src="assets/images/m1.png" alt="Magic Eden" />
     </a>
-    <a href="#wl-checker" class="icon-btn">
-      <img src="assets/images/sr1.png" alt="FartList" style="width:36px; height:36px;" />
+    <a href="#wl-checker" class="cartoon-btn">
+      <img src="assets/images/sr1.png" alt="FartList" />
     </a>
-    <a href="#mint-details" class="icon-btn">
-      <img src="assets/images/sr2.png" alt="Mint" style="width:36px; height:36px;" />
+    <a href="#mint-details" class="cartoon-btn">
+      <img src="assets/images/sr2.png" alt="Mint" />
     </a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNiZ9BYiiRylY4uvcyYR9i0wCV35e341TofNk_ExtdCQ4wXA/viewform?usp=dialog" target="_blank" class="icon-btn">
-      <img src="assets/images/c1.png" alt="Collab" style="width:36px; height:36px;" />
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNiZ9BYiiRylY4uvcyYR9i0wCV35e341TofNk_ExtdCQ4wXA/viewform?usp=dialog" target="_blank" class="cartoon-btn">
+      <img src="assets/images/c1.png" alt="Collab" />
     </a>
   </div>
 </div>
+
 
 
 
@@ -1062,7 +1083,6 @@ p.mint-info {
 
 
 
-
 <script>
   const toggleBtn = document.getElementById('mobile-menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -1074,20 +1094,15 @@ p.mint-info {
     if (menuOpen) {
       mobileMenu.classList.add('show');
       toggleBtn.textContent = '×';
+      mobileMenu.style.display = 'flex';
     } else {
       mobileMenu.classList.remove('show');
-      mobileMenu.style.display = 'none';
       toggleBtn.textContent = '+';
-
-      // Reset display after animation ends for future toggle
-      setTimeout(() => {
-        mobileMenu.style.display = 'none';
-      }, 500);
+      mobileMenu.style.display = 'none';
     }
-
-    // Toggle display manually to re-trigger animation
-    if (menuOpen) {
-      mobileMenu.style.display = 'flex';
+  });
+</script>
+obileMenu.style.display = 'flex';
     }
   });
 </script>
