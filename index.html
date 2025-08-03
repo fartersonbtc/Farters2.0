@@ -1083,39 +1083,52 @@ p.mint-info {
 
 
 <script>
-  const fartSound = document.getElementById('fart-sound');
-  let isAudioUnlocked = false;
+  let audioContext;
+  let buffer;
 
-  const unlockAudio = () => {
-    // Try to play the audio once to unlock it
-    fartSound.play().then(() => {
-      fartSound.pause();
-      fartSound.currentTime = 0;
-      isAudioUnlocked = true;
-    }).catch(() => {
-      // Failed, try again on next click
+  // Load the fart sound into buffer
+  async function loadFartSound() {
+    try {
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const response = await fetch('assets/voices/sound.mp3');
+      const arrayBuffer = await response.arrayBuffer();
+      buffer = await audioContext.decodeAudioData(arrayBuffer);
+    } catch (e) {
+      console.error("Failed to load fart sound:", e);
+    }
+  }
+
+  // Play the fart sound
+  function playFartSound() {
+    if (!buffer || !audioContext) return;
+    const source = audioContext.createBufferSource();
+    source.buffer = buffer;
+    source.connect(audioContext.destination);
+    source.start(0);
+  }
+
+  // Unlock audio context on first interaction
+  function unlockAudioContext() {
+    if (!audioContext) return;
+    if (audioContext.state === 'suspended') {
+      audioContext.resume();
+    }
+  }
+
+  // Load sound and bind events
+  window.addEventListener('DOMContentLoaded', () => {
+    loadFartSound();
+
+    document.addEventListener('click', () => {
+      unlockAudioContext();
+      playFartSound();
     });
-  };
 
-  // Unlock audio on first touch or click
-  document.addEventListener('touchstart', unlockAudio, { once: true });
-  document.addEventListener('click', unlockAudio, { once: true });
-
-  // Play sound on every interaction
-  const playFart = (e) => {
-    if (!isAudioUnlocked) return;
-
-    fartSound.currentTime = 0;
-    fartSound.play().catch((err) => {
-      // If blocked again, try unlocking next interaction
-      isAudioUnlocked = false;
-      console.warn("Blocked fart sound:", err);
+    document.addEventListener('touchstart', () => {
+      unlockAudioContext();
+      playFartSound();
     });
-  };
-
-  // Works better on mobile when listening to both events
-  document.addEventListener('click', playFart);
-  document.addEventListener('touchstart', playFart);
+  });
 </script>
 
 
