@@ -1081,6 +1081,26 @@ p.mint-info {
 
 
 
+<script>
+  // Create the audio object
+  const fartSound = new Audio("assets/voices/sound.mp3");
+
+  // To allow autoplay after user interaction
+  let soundEnabled = false;
+
+  // Enable sound on first interaction
+  document.addEventListener('click', () => {
+    if (!soundEnabled) {
+      // On first click, play once silently to unlock audio
+      fartSound.play().catch(() => {}); // Handle autoplay block silently
+      soundEnabled = true;
+    } else {
+      // Play on every click after unlocked
+      fartSound.currentTime = 0; // rewind to start
+      fartSound.play().catch((err) => console.error("Sound error:", err));
+    }
+  });
+</script>
 
 
 
