@@ -571,10 +571,33 @@ p.mint-info {
 
 
 
-@keyframes cartoonSlideIn {
+/* Slow bounce for toggle button */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2.5s ease-in-out infinite;
+}
+
+/* Cartoon shadow for dropdown container */
+.shadow-cartoon {
+  box-shadow:
+    6px 6px 0 #7f9a33,
+    -6px -6px 0 #2c5c3b,
+    12px 12px 0 #14532d;
+}
+
+/* Dropdown wobble show animation */
+@keyframes wobble-in {
   0% {
-    transform: scale(0.8) rotate(-5deg);
+    transform: scale(0.7) rotate(-10deg);
     opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(10deg);
+    opacity: 1;
   }
   100% {
     transform: scale(1) rotate(0deg);
@@ -584,29 +607,85 @@ p.mint-info {
 
 #mobile-menu.show {
   display: flex !important;
-  animation: cartoonSlideIn 0.4s ease-out forwards;
+  animation: wobble-in 0.5s ease forwards;
 }
 
+/* Cartoon buttons style */
 .cartoon-btn {
-  background: #fff;
-  border: 2px dashed #2c5c3b;
-  border-radius: 12px;
-  padding: 8px;
-  width: 54px;
-  height: 54px;
-  box-shadow: 2px 2px 8px rgba(44, 92, 59, 0.3);
-  transition: all 0.2s ease;
+  background: #ffffff;
+  border: 3px dashed #2c5c3b;
+  border-radius: 1rem;
+  padding: 10px;
+  width: 130px;
+  box-shadow:
+    4px 4px 0 #7f9a33,
+    -4px -4px 0 #2c5c3b,
+    8px 8px 0 #14532d;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  color: #2c5c3b;
+  user-select: none;
+  opacity: 0;
+  transform: translateY(20px);
+  animation-fill-mode: forwards;
 }
 
+/* Icon size */
 .cartoon-btn img {
   width: 36px;
   height: 36px;
 }
 
+/* Hover effect for buttons */
 .cartoon-btn:hover {
   transform: scale(1.1) rotate(-2deg);
   background-color: #e7fbe2;
+  box-shadow:
+    6px 6px 0 #7f9a33,
+    -6px -6px 0 #2c5c3b,
+    12px 12px 0 #14532d;
 }
+
+/* Staggered animation for each menu item */
+#mobile-menu.show .cartoon-btn:nth-child(1) {
+  animation: bounce-in 0.3s ease forwards 0.05s;
+}
+#mobile-menu.show .cartoon-btn:nth-child(2) {
+  animation: bounce-in 0.3s ease forwards 0.15s;
+}
+#mobile-menu.show .cartoon-btn:nth-child(3) {
+  animation: bounce-in 0.3s ease forwards 0.25s;
+}
+#mobile-menu.show .cartoon-btn:nth-child(4) {
+  animation: bounce-in 0.3s ease forwards 0.35s;
+}
+#mobile-menu.show .cartoon-btn:nth-child(5) {
+  animation: bounce-in 0.3s ease forwards 0.45s;
+}
+
+/* Bounce-in keyframes */
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 
 
 
@@ -659,31 +738,46 @@ p.mint-info {
   class="mx-auto mt-2 w-full max-w-[800px] min-w-[300px] h-auto logo-hover-fart" 
   style="margin-top: 0.3rem; margin-bottom: 0.3rem;" 
   />
- <!-- Mobile Menu Toggle -->
-<div class="block sm:hidden text-center mt-4">
-  <button id="mobile-menu-toggle" class="text-4xl text-[#2c5c3b] transition-transform duration-300 hover:scale-125">
-    +
+    <!-- Mobile Cartoon Dropdown Menu -->
+<div class="block sm:hidden text-center mt-6 relative">
+
+  <!-- Creative Toggle Button -->
+  <button id="mobile-menu-toggle" aria-label="Toggle menu" 
+    class="relative w-14 h-14 rounded-full bg-[#7f9a33] shadow-lg flex items-center justify-center text-white text-3xl cursor-pointer
+           hover:bg-[#2c5c3b] active:scale-90 transition-transform duration-300 ease-in-out
+           animate-bounce-slow">
+    💨
   </button>
 
-  <!-- Cartoon Style Dropdown -->
-  <div id="mobile-menu" class="hidden flex-col items-center gap-3 mt-4" style="display: none;">
-    <!-- Each icon inside a rounded button card -->
+  <!-- Dropdown Menu Container -->
+  <div id="mobile-menu" class="hidden flex flex-col items-center gap-4 mt-4 absolute left-1/2 -translate-x-1/2 w-48
+                              bg-white border-4 border-[#2c5c3b] rounded-2xl shadow-cartoon p-4 z-50 origin-top"
+       style="transform-origin: top center;">
+    
+    <!-- Menu Items with icons and labels -->
     <a href="https://x.com/FartersBRC" target="_blank" class="cartoon-btn">
       <img src="assets/images/xicon.png" alt="X" />
+      <span>Follow on X</span>
     </a>
     <a target="_blank" class="cartoon-btn">
       <img src="assets/images/m1.png" alt="Magic Eden" />
+      <span>Magic Eden</span>
     </a>
     <a href="#wl-checker" class="cartoon-btn">
       <img src="assets/images/sr1.png" alt="FartList" />
+      <span>Fartlist Checker</span>
     </a>
     <a href="#mint-details" class="cartoon-btn">
       <img src="assets/images/sr2.png" alt="Mint" />
+      <span>Mint Details</span>
     </a>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNiZ9BYiiRylY4uvcyYR9i0wCV35e341TofNk_ExtdCQ4wXA/viewform?usp=dialog" target="_blank" class="cartoon-btn">
       <img src="assets/images/c1.png" alt="Collab" />
+      <span>Collab Request</span>
     </a>
   </div>
+</div>
+
 </div>
 
 
@@ -1084,27 +1178,31 @@ p.mint-info {
 
 
 <script>
-  const toggleBtn = document.getElementById('mobile-menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
 
-  let menuOpen = false;
+const toggleBtn = document.getElementById('mobile-menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
 
-  toggleBtn.addEventListener('click', () => {
-    menuOpen = !menuOpen;
-    if (menuOpen) {
-      mobileMenu.classList.add('show');
-      toggleBtn.textContent = '×';
-      mobileMenu.style.display = 'flex';
-    } else {
-      mobileMenu.classList.remove('show');
-      toggleBtn.textContent = '+';
+toggleBtn.addEventListener('click', () => {
+  if (mobileMenu.classList.contains('show')) {
+    // Hide menu
+    mobileMenu.classList.remove('show');
+    setTimeout(() => {
       mobileMenu.style.display = 'none';
-    }
-  });
-</script>
-obileMenu.style.display = 'flex';
-    }
-  });
+      // Reset buttons opacity & transform for next open
+      mobileMenu.querySelectorAll('.cartoon-btn').forEach(btn => {
+        btn.style.opacity = 0;
+        btn.style.transform = 'translateY(20px)';
+      });
+    }, 400);
+  } else {
+    // Show menu
+    mobileMenu.style.display = 'flex';
+    // Trigger reflow to enable animation
+    void mobileMenu.offsetWidth;
+    mobileMenu.classList.add('show');
+  }
+});
+
 </script>
 
 
