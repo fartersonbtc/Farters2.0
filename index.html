@@ -1107,15 +1107,23 @@ p.mint-info {
 
 
 <script>
-
   const toggle = document.getElementById('fartMenuToggle');
   const dropdown = document.getElementById('fartMenuDropdown');
+  const icon = document.getElementById('fartToggleIcon');
 
   toggle.addEventListener('click', () => {
+    const isHidden = dropdown.classList.contains('hidden');
+    
     dropdown.classList.toggle('hidden');
-    dropdown.classList.add('animate__animated', 'animate__bounceInDown');
-  });
 
+    if (isHidden) {
+      // Menu is being shown
+      icon.src = 'assets/images/cancel.png';
+    } else {
+      // Menu is being hidden
+      icon.src = 'assets/images/down.png';
+    }
+  });
 </script>
 
 
