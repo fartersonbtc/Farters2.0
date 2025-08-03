@@ -603,6 +603,7 @@ p.mint-info {
 
 </head>
 <body>
+<audio id="fart-sound" src="assets/voices/sound.mp3" preload="auto"></audio>
 
   
   <div id="loading-overlay">
@@ -660,8 +661,8 @@ p.mint-info {
       <img src="assets/images/xicon.png" alt="X" class="w-10 h-10 hover:scale-110 transition-transform" />
       Follow on X
     </a>
-    <a  target="_blank" title="ME" class="icon-btnflex items-center gap-3">
-      <img src="assets/images/m1.png" alt="MagicEden" class="w-10 h-10 hover:scale-110 transition-transform" />
+    <a  target="_blank" title="ME" class="icon-btnf lex items-center gap-3">
+      <img src="assets/images/sr2.png" alt="MagicEden" class="w-10 h-10 hover:scale-110 transition-transform" />
       Soon
     </a>
     <a href="#wl-checker" title="FartList Checker" class="icon-btn flex items-center gap-3">
@@ -1081,6 +1082,31 @@ p.mint-info {
 
 
 
+<script>
+  const fartSound = document.getElementById('fart-sound');
+
+  // Unlock audio context on first interaction for mobile browsers
+  const unlockAudio = () => {
+    fartSound.play().then(() => {
+      fartSound.pause();
+      fartSound.currentTime = 0;
+    }).catch(() => {});
+    document.removeEventListener('touchstart', unlockAudio);
+    document.removeEventListener('click', unlockAudio);
+  };
+
+  document.addEventListener('touchstart', unlockAudio, { once: true });
+  document.addEventListener('click', unlockAudio, { once: true });
+
+  // Play fart sound on every click
+  document.addEventListener('click', () => {
+    fartSound.currentTime = 0;
+    fartSound.play().catch(err => {
+      // Mobile browser still blocked it
+      console.warn('Fart sound blocked:', err);
+    });
+  });
+</script>
 
 
 
