@@ -1084,29 +1084,40 @@ p.mint-info {
 
 <script>
   const fartSound = document.getElementById('fart-sound');
+  let isAudioUnlocked = false;
 
-  // Unlock audio context on first interaction for mobile browsers
   const unlockAudio = () => {
+    // Try to play the audio once to unlock it
     fartSound.play().then(() => {
       fartSound.pause();
       fartSound.currentTime = 0;
-    }).catch(() => {});
-    document.removeEventListener('touchstart', unlockAudio);
-    document.removeEventListener('click', unlockAudio);
+      isAudioUnlocked = true;
+    }).catch(() => {
+      // Failed, try again on next click
+    });
   };
 
+  // Unlock audio on first touch or click
   document.addEventListener('touchstart', unlockAudio, { once: true });
   document.addEventListener('click', unlockAudio, { once: true });
 
-  // Play fart sound on every click
-  document.addEventListener('click', () => {
+  // Play sound on every interaction
+  const playFart = (e) => {
+    if (!isAudioUnlocked) return;
+
     fartSound.currentTime = 0;
-    fartSound.play().catch(err => {
-      // Mobile browser still blocked it
-      console.warn('Fart sound blocked:', err);
+    fartSound.play().catch((err) => {
+      // If blocked again, try unlocking next interaction
+      isAudioUnlocked = false;
+      console.warn("Blocked fart sound:", err);
     });
-  });
+  };
+
+  // Works better on mobile when listening to both events
+  document.addEventListener('click', playFart);
+  document.addEventListener('touchstart', playFart);
 </script>
+
 
 
 
