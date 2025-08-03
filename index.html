@@ -564,6 +564,33 @@ p.mint-info {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+@keyframes cartoonSlideIn {
+  0% {
+    transform: translateY(-20px) scale(0.8) rotate(-5deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+#mobile-menu.show {
+  display: flex !important;
+  animation: cartoonSlideIn 0.5s ease-out forwards;
+}
+
+
 </style>
 
 </head>
@@ -613,24 +640,32 @@ p.mint-info {
   class="mx-auto mt-2 w-full max-w-[800px] min-w-[300px] h-auto logo-hover-fart" 
   style="margin-top: 0.3rem; margin-bottom: 0.3rem;" 
   />
-  <!-- Mobile-only CTA Buttons -->
-<div class="block sm:hidden flex justify-center gap-4 mt-4">
-  <a href="https://x.com/FartersBRC" target="_blank" class="icon-btn">
-    <img src="assets/images/xicon.png" alt="X (Twitter)" style="width:36px; height:36px;" />
-  </a>
-  <a target="_blank" class="icon-btn">
-    <img src="assets/images/m1.png" alt="X (Twitter)" style="width:36px; height:36px;" />
-  </a>
-  <a href="#wl-checker" class="icon-btn">
-    <img src="assets/images/sr1.png" alt="FartList" style="width:36px; height:36px;" />
-  </a>
-  <a href="#mint-details" class="icon-btn">
-    <img src="assets/images/sr2.png" alt="Mint" style="width:36px; height:36px;" />
-  </a>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNiZ9BYiiRylY4uvcyYR9i0wCV35e341TofNk_ExtdCQ4wXA/viewform?usp=dialog" target="_blank" class="icon-btn">
-    <img src="assets/images/c1.png" alt="Collab" style="width:36px; height:36px;" />
-  </a>
+  <!-- Mobile Menu Toggle -->
+<div class="block sm:hidden text-center mt-4">
+  <button id="mobile-menu-toggle" class="text-4xl text-[#2c5c3b] transition-transform duration-300 hover:scale-125">
+    +
+  </button>
+
+  <!-- Mobile Dropdown Menu (hidden by default) -->
+  <div id="mobile-menu" class="mt-4 flex-col items-center gap-4 hidden animate__animated" style="display: none;">
+    <a href="https://x.com/FartersBRC" target="_blank" class="icon-btn">
+      <img src="assets/images/xicon.png" alt="X (Twitter)" style="width:36px; height:36px;" />
+    </a>
+    <a target="_blank" class="icon-btn">
+      <img src="assets/images/m1.png" alt="Magic Eden" style="width:36px; height:36px;" />
+    </a>
+    <a href="#wl-checker" class="icon-btn">
+      <img src="assets/images/sr1.png" alt="FartList" style="width:36px; height:36px;" />
+    </a>
+    <a href="#mint-details" class="icon-btn">
+      <img src="assets/images/sr2.png" alt="Mint" style="width:36px; height:36px;" />
+    </a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNiZ9BYiiRylY4uvcyYR9i0wCV35e341TofNk_ExtdCQ4wXA/viewform?usp=dialog" target="_blank" class="icon-btn">
+      <img src="assets/images/c1.png" alt="Collab" style="width:36px; height:36px;" />
+    </a>
+  </div>
 </div>
+
 
 
 
@@ -657,10 +692,7 @@ p.mint-info {
         <div class="mint-card">
           <h3 class="mint-title">Why Farters?</h3>
           <p class="mint-info text-sm mt-4">
-            Born in Bitcoin’s mempool, Farters blends memes with function.
-Each FARTER earns $GAZ through native BRC2.0 staking.
-The $GAZ token launches at block @912,690 this September.
-This isn’t just f'Art — it’s gas with purpose.
+           Born in Bitcoin’s mempool, Farters blends meme culture with real utility. Each FARTER earns our token via native BRC-2.0 staking. $GAZ launches at block 912,690 this September. This isn’t just f’Art - it’s gas with purpose. Bitcoin Utilities Are Evolving.
           </p>
         </div>
       </div>
@@ -1027,6 +1059,38 @@ This isn’t just f'Art — it’s gas with purpose.
 </script>
 
 
+
+
+
+
+<script>
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  let menuOpen = false;
+
+  toggleBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    if (menuOpen) {
+      mobileMenu.classList.add('show');
+      toggleBtn.textContent = '×';
+    } else {
+      mobileMenu.classList.remove('show');
+      mobileMenu.style.display = 'none';
+      toggleBtn.textContent = '+';
+
+      // Reset display after animation ends for future toggle
+      setTimeout(() => {
+        mobileMenu.style.display = 'none';
+      }, 500);
+    }
+
+    // Toggle display manually to re-trigger animation
+    if (menuOpen) {
+      mobileMenu.style.display = 'flex';
+    }
+  });
+</script>
 
 
 
