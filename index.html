@@ -1082,12 +1082,12 @@ p.mint-info {
 <script>
   let audioContext;
   let buffer;
+  let isTouch = false; // To prevent double firing
 
-  // Load the fart sound into buffer
   async function loadFartSound() {
     try {
       audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      const response = await fetch('assets/voices/sound.mp3');
+      const response = await fetch('assets/sounds/fart.mp3');
       const arrayBuffer = await response.arrayBuffer();
       buffer = await audioContext.decodeAudioData(arrayBuffer);
     } catch (e) {
@@ -1095,7 +1095,6 @@ p.mint-info {
     }
   }
 
-  // Play the fart sound
   function playFartSound() {
     if (!buffer || !audioContext) return;
     const source = audioContext.createBufferSource();
@@ -1104,7 +1103,6 @@ p.mint-info {
     source.start(0);
   }
 
-  // Unlock audio context on first interaction
   function unlockAudioContext() {
     if (!audioContext) return;
     if (audioContext.state === 'suspended') {
@@ -1112,16 +1110,23 @@ p.mint-info {
     }
   }
 
-  // Load sound and bind events
   window.addEventListener('DOMContentLoaded', () => {
     loadFartSound();
 
-    document.addEventListener('click', () => {
+    // Touchstart = mobile tap
+    document.addEventListener('touchstart', (e) => {
+      isTouch = true;
       unlockAudioContext();
       playFartSound();
     });
 
-    document.addEventListener('touchstart', () => {
+    // Click = desktop click or fallback
+    document.addEventListener('click', (e) => {
+      if (isTouch) {
+        // Ignore this click if it followed a touch
+        isTouch = false;
+        return;
+      }
       unlockAudioContext();
       playFartSound();
     });
