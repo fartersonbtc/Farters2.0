@@ -747,7 +747,7 @@ p.mint-info {
         <div class="mint-card">
           <h3 class="mint-title">Why Farters?</h3>
           <p class="mint-info text-sm mt-4">
-           Born in Bitcoin’s mempool, Farters blends meme culture with real utility. Each FARTER earns our token via native BRC-2.0 staking. $GAZ launches at block 912,690 this September. This isn’t just f’Art - it’s gas with purpose. BTC Utilities Are Evolving.
+           Born in Bitcoin’s mempool, Farters blends meme culture with real utility. Each FARTER earns our token via native BRC-2.0 staking. $GAZ launches at block 912,690 this September. This isn’t just f’Art - it’s gas with purpose. Bitcoin Utilities Are</br> Evolving.
           </p>
         </div>
       </div>
@@ -1121,10 +1121,14 @@ p.mint-info {
 
 
 
+
+
+
+
 <script>
   let audioContext;
   let buffer;
-  let recentTouch = false;
+  let isTouch = false; // To prevent double firing
 
   async function loadFartSound() {
     try {
@@ -1146,35 +1150,34 @@ p.mint-info {
   }
 
   function unlockAudioContext() {
-    if (audioContext && audioContext.state === 'suspended') {
+    if (!audioContext) return;
+    if (audioContext.state === 'suspended') {
       audioContext.resume();
-    }
-  }
-
-  function handleInteraction(isFromTouch) {
-    unlockAudioContext();
-
-    // If this was a touch, mark it
-    if (isFromTouch) {
-      recentTouch = true;
-      setTimeout(() => { recentTouch = false; }, 500); // reset after 500ms
-      playFartSound();
-    } else if (!recentTouch) {
-      // Only play if no touch event just happened
-      playFartSound();
     }
   }
 
   window.addEventListener('DOMContentLoaded', () => {
     loadFartSound();
 
-    document.addEventListener('touchstart', () => handleInteraction(true));
-    document.addEventListener('click', () => handleInteraction(false));
+    // Touchstart = mobile tap
+    document.addEventListener('touchstart', (e) => {
+      isTouch = true;
+      unlockAudioContext();
+      playFartSound();
+    });
+
+    // Click = desktop click or fallback
+    document.addEventListener('click', (e) => {
+      if (isTouch) {
+        // Ignore this click if it followed a touch
+        isTouch = false;
+        return;
+      }
+      unlockAudioContext();
+      playFartSound();
+    });
   });
 </script>
-
-
-
 
 
 
