@@ -9,7 +9,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
   />
-  <audio id="fartSound" src="assets/voices/sound.mp3" preload="auto"></audio>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -604,8 +603,8 @@ p.mint-info {
 
 </head>
 <body>
-    <audio id="fartSound" src="assets/voices/sound.mp3" preload="auto"></audio>
 
+  
   <div id="loading-overlay">
   <div id="loading-container" style="text-align:center;">
     <img src="assets/images/btnfart.png" alt="Loading fart animation" />
@@ -962,18 +961,7 @@ p.mint-info {
     });
   </script>
 
-  <audio id="fartSound" src="assets/voices/sound.mp3" preload="auto"></audio>
-
-  <script>
-    const fartAudio = document.getElementById('fartSound');
-
-    document.body.addEventListener('click', () => {
-      fartAudio.currentTime = 0;
-      fartAudio.play().catch(e => {
-        console.log('Audio play prevented:', e);
-      });
-    });
-  </script>
+  
 
 
 
@@ -1090,7 +1078,6 @@ p.mint-info {
   const dropdown = document.getElementById('fartMenuDropdown');
 
   toggle.addEventListener('click', () => {
-    document.getElementById('fartSound').play().catch(() => {});
     dropdown.classList.toggle('hidden');
     dropdown.classList.add('animate__animated', 'animate__bounceInDown');
   });
