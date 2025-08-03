@@ -449,7 +449,7 @@ p.mint-info {
         padding: 1rem !important;
       }
       .card h2.text-xl.section-title {
-        font-size: 1rem !important;
+        font-size: 1.3rem !important;
       }
       .card p.text-xs,
       .card ul.list-disc.text-xs {
@@ -556,7 +556,7 @@ p.mint-info {
   }
 
   #loading-text {
-    font-size: 1.3rem !important;
+    font-size: 1rem !important;
     text-align: center; /* center text */
     
   }
@@ -1082,7 +1082,7 @@ p.mint-info {
 <script>
   let audioContext;
   let buffer;
-  let isTouch = false; // To prevent double firing
+  let recentTouch = false;
 
   async function loadFartSound() {
     try {
@@ -1104,34 +1104,33 @@ p.mint-info {
   }
 
   function unlockAudioContext() {
-    if (!audioContext) return;
-    if (audioContext.state === 'suspended') {
+    if (audioContext && audioContext.state === 'suspended') {
       audioContext.resume();
+    }
+  }
+
+  function handleInteraction(isFromTouch) {
+    unlockAudioContext();
+
+    // If this was a touch, mark it
+    if (isFromTouch) {
+      recentTouch = true;
+      setTimeout(() => { recentTouch = false; }, 500); // reset after 500ms
+      playFartSound();
+    } else if (!recentTouch) {
+      // Only play if no touch event just happened
+      playFartSound();
     }
   }
 
   window.addEventListener('DOMContentLoaded', () => {
     loadFartSound();
 
-    // Touchstart = mobile tap
-    document.addEventListener('touchstart', (e) => {
-      isTouch = true;
-      unlockAudioContext();
-      playFartSound();
-    });
-
-    // Click = desktop click or fallback
-    document.addEventListener('click', (e) => {
-      if (isTouch) {
-        // Ignore this click if it followed a touch
-        isTouch = false;
-        return;
-      }
-      unlockAudioContext();
-      playFartSound();
-    });
+    document.addEventListener('touchstart', () => handleInteraction(true));
+    document.addEventListener('click', () => handleInteraction(false));
   });
 </script>
+
 
 
 
