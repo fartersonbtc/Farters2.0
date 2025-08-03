@@ -449,7 +449,7 @@ p.mint-info {
         padding: 1rem !important;
       }
       .card h2.text-xl.section-title {
-        font-size: 1.3rem !important;
+        font-size: 1rem !important;
       }
       .card p.text-xs,
       .card ul.list-disc.text-xs {
@@ -1087,7 +1087,7 @@ p.mint-info {
   async function loadFartSound() {
     try {
       audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      const response = await fetch('assets/sounds/fart.mp3');
+      const response = await fetch('assets/voices/sound.mp3');
       const arrayBuffer = await response.arrayBuffer();
       buffer = await audioContext.decodeAudioData(arrayBuffer);
     } catch (e) {
